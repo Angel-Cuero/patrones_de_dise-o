@@ -1,5 +1,4 @@
-import { Logger } from 'jsr:@deno-library/logger';
-import { COLORS } from "../../helpers/colors.ts";
+import { Logger } from '@deno-library/logger';
 
 
 //Uso de Libreria de Errores de Deno

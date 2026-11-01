@@ -14,7 +14,7 @@
  * https://refactoring.guru/es/design-patterns/observer
  */
 
-import { COLORS } from '../helpers/colors.ts';
+import { COLORS } from '../../helpers/colors.ts';
 
 // Interfaz Observer
 interface Observer {

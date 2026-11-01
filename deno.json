@@ -1,11 +1,18 @@
 {
   "tasks": {
-    "builder": "deno run ejercicios/01-builder.ts",
-    "adapter": "deno run ejercicios/02-adapter.ts",
-    "flyweight": "deno run ejercicios/03-flyweight.ts",
-    "observer": "deno run ejercicios/04-observer.ts"
+    "builder": "deno run 00-Ejercicios/01-builder.ts",
+    "adapter": "deno run 00-Ejercicios/02-adapter.ts",
+    "flyweight": "deno run 00-Ejercicios/03-flyweight.ts",
+    "observer": "deno run 00-Ejercicios/04-observer.ts",
+    "prototype": "deno run 00-Ejercicios/05-prototype.ts",
+    "factory-function": "deno run 00-Ejercicios/06-factory-function.ts",
+    "composite": "deno run 00-Ejercicios/07-composite.ts",
+    "iterator": "deno run 00-Ejercicios/08-iterator.ts",
+    "memento": "deno run 00-Ejercicios/09-memento.ts",
+    "state": "deno run 00-Ejercicios/10-state.ts"
   },
   "imports": {
-    "@std/assert": "jsr:@std/assert@1"
+    "@std/assert": "jsr:@std/assert@1",
+    "@deno-library/logger": "jsr:@deno-library/logger@1"
   }
 }

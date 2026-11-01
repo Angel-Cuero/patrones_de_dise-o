@@ -9,7 +9,7 @@
 * https://refactoring.guru/es/design-patterns/flyweight
 */
 
-import { COLORS } from '../helpers/colors.ts';
+import { COLORS } from '../../helpers/colors.ts';
 
 interface Location {
     display(coords: { x: number, y: number }): void;

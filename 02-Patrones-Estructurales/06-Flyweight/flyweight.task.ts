@@ -7,7 +7,7 @@
  * * la cantidad de memoria que utilizan.
  */
 
-import { COLORS } from '../helpers/colors.ts';
+import { COLORS } from '../../helpers/colors.ts';
 
 // 1. Clase que representa el tipo de bala - BulletType (Flyweight)
 class BulletType {

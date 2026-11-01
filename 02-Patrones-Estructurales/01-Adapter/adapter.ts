@@ -12,9 +12,7 @@ import { DenoLoggerAdapter } from './Adapter-Files/logger-adapter.ts';
  * https://refactoring.guru/es/design-patterns/adapter
  */
 
-import { LocalLogger } from "./Adapter-Files/local-logger.ts";
-
-//const logger = new LocalLogger('adapter.ts');
+// El LocalLogger con las herramientas de consola de deno ya no se use debido a su fácil acceso a la librería...
 const logger = new DenoLoggerAdapter('adapter.ts');
 
 logger.writeLog('Mensaje de un log normal');

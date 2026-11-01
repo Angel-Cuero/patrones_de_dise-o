@@ -12,18 +12,18 @@ qué es una solución adecuada.
 
 ## Patrones utilizados
 
-| N.º | Patrón           | Tipo           | Archivo                          |
-| --- | ---------------- | -------------- | -------------------------------- |
-| 1   | Builder          | Creacional     | `00-Ejercicios/01-builder.ts`       |
-| 2   | Adapter          | Estructural    | `00-Ejercicios/02-adapter.ts`       |
-| 3   | Flyweight        | Estructural    | `00-Ejercicios/03-flyweight.ts`     |
-| 4   | Observer         | Comportamiento | `00-Ejercicios/04-observer.ts`      |
-| 5   | Prototype        | Creacional     | `00-Ejercicios/05-prototype.ts`     |
-| 6   | Factory Function | Creacional     | `00-Ejercicios/06-factory-function.ts` |
-| 7   | Composite        | Estructural    | `00-Ejercicios/07-composite.ts`     |
-| 8   | Iterator         | Comportamiento | `00-Ejercicios/08-iterator.ts`      |
-| 9   | Memento          | Comportamiento | `00-Ejercicios/09-memento.ts`       |
-| 10  | State            | Comportamiento | `00-Ejercicios/10-state.ts`         |
+| N.º | Patrón           | Tipo           | Archivo                                                         |
+| --- | ---------------- | -------------- | --------------------------------------------------------------- |
+| 1   | Builder          | Creacional     | `01-Patrones-Creacionales/01-Builder/01-builder.ts`             |
+| 2   | Adapter          | Estructural    | `02-Patrones-Estructurales/01-Adapter/02-adapter.ts`            |
+| 3   | Flyweight        | Estructural    | `02-Patrones-Estructurales/03-Flyweight/03-flyweight.ts`        |
+| 4   | Observer         | Comportamiento | `03-Patrones-Comportamiento/03-Observer/04-observer.ts`         |
+| 5   | Prototype        | Creacional     | `01-Patrones-Creacionales/02-Prototype/05-prototype.ts`         |
+| 6   | Factory Function | Creacional     | `01-Patrones-Creacionales/03-Factory-Function/06-factory-function.ts` |
+| 7   | Composite        | Estructural    | `02-Patrones-Estructurales/02-Composite/07-composite.ts`        |
+| 8   | Iterator         | Comportamiento | `03-Patrones-Comportamiento/01-Iterator/08-iterator.ts`         |
+| 9   | Memento          | Comportamiento | `03-Patrones-Comportamiento/02-Memento/09-memento.ts`           |
+| 10  | State            | Comportamiento | `03-Patrones-Comportamiento/04-State/10-state.ts`               |
 
 ## Descripción de los ejercicios
 
@@ -170,36 +170,40 @@ permite agregar estados nuevos sin modificar los existentes.
 
 ```text
 .
-├── 00-Ejercicios/
-│   ├── 01-builder.ts
-│   ├── 02-adapter.ts
-│   ├── 03-flyweight.ts
-│   ├── 04-observer.ts
-│   ├── 05-prototype.ts
-│   ├── 06-factory-function.ts
-│   ├── 07-composite.ts
-│   ├── 08-iterator.ts
-│   ├── 09-memento.ts
-│   └── 10-state.ts
+├── 01-Patrones-Creacionales/
+│   ├── 01-Builder/
+│   │   └── 01-builder.ts
+│   ├── 02-Prototype/
+│   │   └── 05-prototype.ts
+│   └── 03-Factory-Function/
+│       └── 06-factory-function.ts
+├── 02-Patrones-Estructurales/
+│   ├── 01-Adapter/
+│   │   └── 02-adapter.ts
+│   ├── 02-Composite/
+│   │   └── 07-composite.ts
+│   └── 03-Flyweight/
+│       └── 03-flyweight.ts
+├── 03-Patrones-Comportamiento/
+│   ├── 01-Iterator/
+│   │   └── 08-iterator.ts
+│   ├── 02-Memento/
+│   │   └── 09-memento.ts
+│   ├── 03-Observer/
+│   │   └── 04-observer.ts
+│   └── 04-State/
+│       └── 10-state.ts
 ├── helpers/
 │   ├── colors.ts
 │   └── sleep.ts
-├── 01-Patrones-Creacionales/
-│   ├── 01-Builder/
-│   ├── 04-Prototype/
-│   └── 07-Factory-Function/
-├── 02-Patrones-Estructurales/
-│   ├── 01-Adapter/
-│   ├── 03-Composite/
-│   └── 06-Flyweight/
-├── 03-Patrones-Comportamiento/
-│   ├── 03-Iterator/
-│   ├── 05-Memento/
-│   ├── 06-Observer/
-│   └── 07-State/
 ├── deno.json
 └── README.md
 ```
+
+La numeración de las carpetas de patrones es independiente por categoría:
+`01`, `02`, `03`, etc. dentro de creacionales, estructurales y de
+comportamiento. El número que conserva cada archivo corresponde al orden
+original del taller.
 
 ## Cómo ejecutar
 
@@ -207,16 +211,16 @@ Los ejercicios están escritos en TypeScript para Deno. Desde la raíz del
 repositorio:
 
 ```bash
-deno run 00-Ejercicios/01-builder.ts
-deno run 00-Ejercicios/02-adapter.ts
-deno run 00-Ejercicios/03-flyweight.ts
-deno run 00-Ejercicios/04-observer.ts
-deno run 00-Ejercicios/05-prototype.ts
-deno run 00-Ejercicios/06-factory-function.ts
-deno run 00-Ejercicios/07-composite.ts
-deno run 00-Ejercicios/08-iterator.ts
-deno run 00-Ejercicios/09-memento.ts
-deno run 00-Ejercicios/10-state.ts
+deno run 01-Patrones-Creacionales/01-Builder/01-builder.ts
+deno run 01-Patrones-Creacionales/02-Prototype/05-prototype.ts
+deno run 01-Patrones-Creacionales/03-Factory-Function/06-factory-function.ts
+deno run 02-Patrones-Estructurales/01-Adapter/02-adapter.ts
+deno run 02-Patrones-Estructurales/02-Composite/07-composite.ts
+deno run 02-Patrones-Estructurales/03-Flyweight/03-flyweight.ts
+deno run 03-Patrones-Comportamiento/01-Iterator/08-iterator.ts
+deno run 03-Patrones-Comportamiento/02-Memento/09-memento.ts
+deno run 03-Patrones-Comportamiento/03-Observer/04-observer.ts
+deno run 03-Patrones-Comportamiento/04-State/10-state.ts
 ```
 
 También se pueden ejecutar con las tareas definidas en `deno.json`:
@@ -236,16 +240,14 @@ deno task state
 
 ## Notas
 
-- Cada archivo es autónomo y contiene su propia explicación del patrón.
-- Los ejemplos usan únicamente la biblioteca estándar de TypeScript/Deno y el
+- Cada archivo es autónomo, contiene su propia explicación del patrón y tiene
+  una `main()` de demostración que se ejecuta sin interacción del usuario.
+- Los ejercicios usan únicamente la biblioteca estándar de TypeScript/Deno y el
   helper `helpers/colors.ts` para resaltar la salida en consola.
-- Carpeta `00-Ejercicios/`: los 10 ejercicios del taller, uno por patrón y con
-  su propia `main()` de demostración.
-- Carpetas `01-Patrones-Creacionales/`, `02-Patrones-Estructurales/` y
-  `03-Patrones-Comportamiento/`: un ejemplo base por cada patrón, que sirve
-  como punto de referencia de la implementación mínima del patrón.
-- El ejemplo del patrón State es interactivo (`03-Patrones-Comportamiento/
-  07-State/state.ts`): solicita opciones por consola. Los ejercicios del
-  taller se ejecutan sin interacción del usuario.
-- Los ejercicios son independientes de los ejemplos de clase incluidos en el
-  repositorio; se apoyan en ellos como referencia de estilo y complejidad.
+- Las carpetas `01-Patrones-Creacionales/`, `02-Patrones-Estructurales/` y
+  `03-Patrones-Comportamiento/` agrupan los ejercicios por tipo de patrón.
+- Cada patrón vive en su propia carpeta numerada de forma consecutiva dentro de
+  su categoría, y el archivo del ejercicio se conserva con el número original
+  del taller para mantener la trazabilidad con el enunciado.
+- Las importaciones de los ejercicios apuntan a `../../helpers/colors.ts`,
+  porque ahora se encuentran dos niveles dentro de la raíz del repositorio.

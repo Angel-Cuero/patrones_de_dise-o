@@ -30,7 +30,7 @@
  * ============================================================================
  */
 
-import { COLORS } from "../helpers/colors.ts";
+import { COLORS } from "../../helpers/colors.ts";
 
 /**
  * Prototipo: el objeto que se sabe clonar a sí mismo.

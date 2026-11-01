@@ -31,7 +31,7 @@
  * ============================================================================
  */
 
-import { COLORS } from '../helpers/colors.ts';
+import { COLORS } from '../../helpers/colors.ts';
 
 /** Interfaz objetivo (Target): lo que espera el código cliente. */
 interface ShippingQuote {

@@ -31,7 +31,7 @@
  * ============================================================================
  */
 
-import { COLORS } from '../helpers/colors.ts';
+import { COLORS } from '../../helpers/colors.ts';
 
 type OrderStatus =
   | 'CREADO'

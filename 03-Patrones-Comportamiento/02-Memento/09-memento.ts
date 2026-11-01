@@ -29,7 +29,7 @@
  * ============================================================================
  */
 
-import { COLORS } from "../helpers/colors.ts";
+import { COLORS } from "../../helpers/colors.ts";
 
 /**
  * Memento: instantánea inmutable del estado del editor. Sus datos solo son

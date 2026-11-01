@@ -33,7 +33,7 @@
  * ============================================================================
  */
 
-import { COLORS } from '../helpers/colors.ts';
+import { COLORS } from '../../helpers/colors.ts';
 
 /** Pista de la lista de reproducción del reproductor. */
 interface Song {

@@ -30,7 +30,7 @@
  * ============================================================================
  */
 
-import { COLORS } from '../helpers/colors.ts';
+import { COLORS } from '../../helpers/colors.ts';
 
 /**
  * Estado intrínseco compartido: datos de una especie de árbol.

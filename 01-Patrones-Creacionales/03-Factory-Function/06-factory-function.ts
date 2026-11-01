@@ -29,7 +29,7 @@
  * ============================================================================
  */
 
-import { COLORS } from "../helpers/colors.ts";
+import { COLORS } from "../../helpers/colors.ts";
 
 /** Interfaz que expone la cuenta: solo operaciones, sin estado manipulable. */
 interface Account {

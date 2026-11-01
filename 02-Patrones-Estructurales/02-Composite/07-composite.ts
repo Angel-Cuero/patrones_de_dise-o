@@ -29,7 +29,7 @@
  * ============================================================================
  */
 
-import { COLORS } from "../helpers/colors.ts";
+import { COLORS } from "../../helpers/colors.ts";
 
 /**
  * Componente: interfaz común para hojas y compuestos. Todo componente sabe

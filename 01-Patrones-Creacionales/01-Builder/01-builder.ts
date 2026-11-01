@@ -29,7 +29,7 @@
  * ============================================================================
  */
 
-import { COLORS } from '../helpers/colors.ts';
+import { COLORS } from '../../helpers/colors.ts';
 
 type CharacterClass = 'Guerrero' | 'Mago' | 'Arquero';
 

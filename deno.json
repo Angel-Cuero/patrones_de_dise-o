@@ -1,0 +1,11 @@
+{
+  "tasks": {
+    "builder": "deno run ejercicios/01-builder.ts",
+    "adapter": "deno run ejercicios/02-adapter.ts",
+    "flyweight": "deno run ejercicios/03-flyweight.ts",
+    "observer": "deno run ejercicios/04-observer.ts"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1"
+  }
+}

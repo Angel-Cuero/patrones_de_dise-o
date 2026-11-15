@@ -1,5 +1,7 @@
 ﻿# Taller de Patrones de Diseño
 
+[![Deploy patterns app to GitHub Pages](https://github.com/Angel-Cuero/patrones_de_dise-o/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Angel-Cuero/patrones_de_dise-o/actions/workflows/deploy-pages.yml)
+
 > **Demo interactiva:** [https://angel-cuero.github.io/patrones_de_dise-o/](https://angel-cuero.github.io/patrones_de_dise-o/)
 >
 > Los diez ejercicios originales de Deno se presentan también en una aplicación

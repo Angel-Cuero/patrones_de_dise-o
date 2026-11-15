@@ -1,0 +1,447 @@
+<header class="site-header">
+  <div class="shell nav">
+    <a class="brand" href="#inicio">
+      <span class="brand-mark">DP</span>
+      <span>Patrones de Diseño</span>
+    </a>
+    <div class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="https://github.com/Angel-Cuero/patrones_de_dise-o" target="_blank" rel="noopener noreferrer">
+        Repositorio ↗
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="hero-orb orb-a" aria-hidden="true"></div>
+    <div class="hero-orb orb-b" aria-hidden="true"></div>
+    <div class="shell hero-grid">
+      <div>
+        <p class="eyebrow"><span class="pulse"></span> Taller de Arquitectura de Software</p>
+        <h1>Diez patrones de diseño.<br /><span class="gradient">Una demo interactiva.</span></h1>
+        <p class="hero-copy">
+          Explora patrones creacionales, estructurales y de comportamiento. Cada ficha explica
+          el problema que resuelve, la solución propuesta y permite probar el patrón en vivo
+          desde el navegador.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#catalogo">Explorar catálogo →</a>
+          <a class="button button-ghost" href="https://github.com/Angel-Cuero/patrones_de_dise-o" target="_blank" rel="noopener noreferrer">Ver código original</a>
+        </div>
+        <div class="hero-meta">
+          <span>Angel Julian Cuero Jiménez</span>
+          <span>·</span>
+          <span>TypeScript · Deno · Angular</span>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card">
+          <strong>{{ categoryCount().Creacional }}</strong>
+          <span>Creacionales</span>
+        </div>
+        <div class="stat-card">
+          <strong>{{ categoryCount().Estructural }}</strong>
+          <span>Estructurales</span>
+        </div>
+        <div class="stat-card">
+          <strong>{{ categoryCount().Comportamiento }}</strong>
+          <span>Comportamiento</span>
+        </div>
+        <div class="stat-card stat-highlight">
+          <strong>10</strong>
+          <span>Demos en vivo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section catalog-section" id="catalogo">
+    <div class="shell">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Catálogo interactivo</p>
+          <h2>Elige un patrón y pruébalo</h2>
+        </div>
+        <div class="filters" role="group" aria-label="Filtrar patrones">
+          @for (category of categories; track category) {
+            <button
+              type="button"
+              class="filter"
+              [class.is-active]="activeCategory() === category"
+              (click)="setCategory(category)"
+            >
+              {{ category }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <div class="workspace">
+        <aside class="pattern-list" aria-label="Lista de patrones">
+          @for (pattern of filteredPatterns(); track pattern.id) {
+            <button
+              type="button"
+              class="pattern-item"
+              [class.is-active]="selectedId() === pattern.id"
+              (click)="selectPattern(pattern)"
+            >
+              <span class="pattern-emoji" aria-hidden="true">{{ pattern.icon }}</span>
+              <span class="pattern-item-text">
+                <strong>{{ pattern.name }}</strong>
+                <small>{{ pattern.category }}</small>
+              </span>
+              <span class="pattern-arrow" aria-hidden="true">→</span>
+            </button>
+          }
+        </aside>
+
+        <article class="detail" id="detalle">
+          <div class="detail-head">
+            <span class="detail-icon" aria-hidden="true">{{ selectedPattern().icon }}</span>
+            <div>
+              <span class="badge" [attr.data-category]="selectedPattern().category">{{ selectedPattern().category }}</span>
+              <h2>{{ selectedPattern().name }}</h2>
+              <p>{{ selectedPattern().summary }}</p>
+            </div>
+          </div>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <span class="explain-label">Problema</span>
+              <p>{{ selectedPattern().problem }}</p>
+            </div>
+            <div class="explain-card explain-solution">
+              <span class="explain-label">Solución</span>
+              <p>{{ selectedPattern().solution }}</p>
+            </div>
+          </div>
+
+          <ul class="points">
+            @for (point of selectedPattern().points; track point) {
+              <li><span aria-hidden="true">✓</span> {{ point }}</li>
+            }
+          </ul>
+
+          <div class="demo">
+            <div class="demo-head">
+              <span class="demo-kicker">Demo interactiva</span>
+              <span class="demo-file">{{ selectedPattern().file }}</span>
+            </div>
+
+            @switch (selectedPattern().id) {
+              @case ('builder') {
+                <div class="demo-grid">
+                  <div class="demo-controls">
+                    <label>
+                      Nombre
+                      <input type="text" [value]="builderName" (input)="builderName = $any($event.target).value" />
+                    </label>
+                    <label>
+                      Clase
+                      <select [value]="builderClass" (change)="builderClass = $any($event.target).value">
+                        <option value="Guerrero">Guerrero</option>
+                        <option value="Mago">Mago</option>
+                        <option value="Arquero">Arquero</option>
+                      </select>
+                    </label>
+                    <label>
+                      Nivel: <strong>{{ builderLevel }}</strong>
+                      <input type="range" min="1" max="30" [value]="builderLevel" (input)="builderLevel = +$any($event.target).value" />
+                    </label>
+                    <button class="button button-primary button-sm" type="button" (click)="createCharacter()">Construir personaje</button>
+                  </div>
+                  <div class="demo-output">
+                    @if (builderResult; as hero) {
+                      <div class="character-card">
+                        <div class="character-top">
+                          <strong>{{ hero.name }}</strong>
+                          <span>{{ hero.characterClass }} · Nv. {{ hero.level }}</span>
+                        </div>
+                        <div class="mini-stats">
+                          <span>❤️ {{ hero.health }}</span>
+                          <span>🔷 {{ hero.mana }}</span>
+                          <span>⚔️ {{ hero.attack }}</span>
+                          <span>🛡️ {{ hero.defense }}</span>
+                        </div>
+                        <p class="output-line">Habilidades: {{ hero.skills.join(', ') }}</p>
+                        <p class="output-line">Equipo: {{ hero.equipment.join(', ') }}</p>
+                      </div>
+                    } @else {
+                      <p class="muted">Completa el nombre y presiona “Construir personaje”.</p>
+                    }
+                  </div>
+                </div>
+              }
+
+              @case ('adapter') {
+                <div class="demo-grid">
+                  <div class="demo-controls">
+                    <label>
+                      Transportadora
+                      <select [value]="adapterProvider" (change)="adapterProvider = $any($event.target).value">
+                        <option value="FedEx">FedEx</option>
+                        <option value="DHL">DHL Express</option>
+                        <option value="ServiEntrega">ServiEntrega</option>
+                      </select>
+                    </label>
+                    <label>
+                      Peso (kg): <strong>{{ adapterWeight }}</strong>
+                      <input type="range" min="1" max="30" [value]="adapterWeight" (input)="adapterWeight = +$any($event.target).value" />
+                    </label>
+                    <label>
+                      Distancia (km): <strong>{{ adapterDistance }}</strong>
+                      <input type="range" min="1" max="1000" [value]="adapterDistance" (input)="adapterDistance = +$any($event.target).value" />
+                    </label>
+                  </div>
+                  <div class="demo-output quote-box">
+                    <span class="quote-provider">{{ adapterQuote.provider }}</span>
+                    <strong class="quote-total">{{ cop.format(adapterQuote.total) }}</strong>
+                    <p class="output-line">{{ adapterQuote.detail }}</p>
+                    <p class="muted">El adaptador normaliza unidades y moneda a un único ShippingQuote.</p>
+                  </div>
+                </div>
+              }
+
+              @case ('flyweight') {
+                <div class="demo-grid">
+                  <div class="demo-controls">
+                    <label>
+                      Árboles simulados: <strong>{{ treeCount.toLocaleString('es-CO') }}</strong>
+                      <input type="range" min="1000" max="100000" step="1000" [value]="treeCount" (input)="treeCount = +$any($event.target).value" />
+                    </label>
+                    <p class="muted">
+                      Los datos de cada especie se comparten. Solo la posición y la edad se guardan
+                      por árbol.
+                    </p>
+                  </div>
+                  <div class="demo-output">
+                    <div class="bar-compare">
+                      <div>
+                        <span>Sin Flyweight</span>
+                        <div class="bar"><span class="bar-full" [style.width.%]="100"></span></div>
+                        <strong>{{ flyweightStats.fullKb.toLocaleString('es-CO') }} KB</strong>
+                      </div>
+                      <div>
+                        <span>Con Flyweight</span>
+                        <div class="bar"><span class="bar-light" [style.width.%]="(flyweightStats.lightKb / flyweightStats.fullKb) * 100"></span></div>
+                        <strong>{{ flyweightStats.lightKb.toLocaleString('es-CO') }} KB</strong>
+                      </div>
+                    </div>
+                    <p class="output-line">Ahorro: {{ flyweightStats.savedKb.toLocaleString('es-CO') }} KB ({{ flyweightStats.savedPercent }}%)</p>
+                  </div>
+                </div>
+              }
+
+              @case ('observer') {
+                <div class="demo-controls observer-controls">
+                  @for (status of orderStates; track status) {
+                    <button
+                      type="button"
+                      class="chip"
+                      [class.is-active]="orderStatus === status"
+                      (click)="changeOrderStatus(status)"
+                    >
+                      {{ status }}
+                    </button>
+                  }
+                </div>
+                <div class="demo-output log-box">
+                  <p class="output-line">Pedido en estado: <strong>{{ orderStatus }}</strong></p>
+                  @if (observerLog.length) {
+                    <ul class="log-list">
+                      @for (entry of observerLog; track entry) {
+                        <li>{{ entry }}</li>
+                      }
+                    </ul>
+                  } @else {
+                    <p class="muted">Selecciona un estado para notificar a los observadores.</p>
+                  }
+                </div>
+              }
+
+              @case ('prototype') {
+                <div class="demo-grid">
+                  <div class="demo-controls">
+                    <label>
+                      Plantilla
+                      <select [value]="selectedTemplate" (change)="selectedTemplate = $any($event.target).value">
+                        @for (template of enemyTemplates; track template.name) {
+                          <option [value]="template.name">{{ template.name }}</option>
+                        }
+                      </select>
+                    </label>
+                    <button class="button button-primary button-sm" type="button" (click)="cloneEnemy()">Clonar enemigo</button>
+                    <p class="muted">Cada clon copia habilidades y nivel de la plantilla, y luego se personaliza.</p>
+                  </div>
+                  <div class="demo-output">
+                    @if (clones.length) {
+                      <ul class="clone-list">
+                        @for (enemy of clones; track enemy.id) {
+                          <li>
+                            <strong>{{ enemy.name }}</strong>
+                            <span>Nv. {{ enemy.level }} · {{ enemy.skills.join(' / ') }}</span>
+                          </li>
+                        }
+                      </ul>
+                    } @else {
+                      <p class="muted">Aún no hay clones. Elige una plantilla y clona un enemigo.</p>
+                    }
+                  </div>
+                </div>
+              }
+
+              @case ('factory') {
+                <div class="demo-grid">
+                  <div class="demo-controls">
+                    <label>
+                      Titular
+                      <input type="text" [value]="accountName" (input)="accountName = $any($event.target).value" />
+                    </label>
+                    <label>
+                      Depósito inicial
+                      <input type="number" min="1" [value]="initialDeposit" (input)="initialDeposit = +$any($event.target).value" />
+                    </label>
+                    <button class="button button-primary button-sm" type="button" (click)="createAccount()">Crear cuenta</button>
+
+                    @if (account) {
+                      <label>
+                        Monto para operar
+                        <input type="number" min="1" [value]="operationAmount" (input)="operationAmount = +$any($event.target).value" />
+                      </label>
+                      <div class="button-row">
+                        <button class="button button-ghost button-sm" type="button" (click)="deposit()">Depositar</button>
+                        <button class="button button-ghost button-sm" type="button" (click)="withdraw()">Retirar</button>
+                      </div>
+                    }
+                  </div>
+                  <div class="demo-output">
+                    @if (account; as acc) {
+                      <div class="account-box">
+                        <span class="output-line">Titular: <strong>{{ acc.name }}</strong></span>
+                        <strong class="account-balance">{{ cop.format(acc.balance) }}</strong>
+                        <ul class="movement-list">
+                          @for (movement of acc.movements.slice(0, 4); track movement) {
+                            <li>{{ movement }}</li>
+                          }
+                        </ul>
+                      </div>
+                    } @else {
+                      <p class="muted">Crea una cuenta válida para ver el saldo encapsulado.</p>
+                    }
+                    @if (factoryMessage) {
+                      <p class="message">{{ factoryMessage }}</p>
+                    }
+                  </div>
+                </div>
+              }
+
+              @case ('composite') {
+                <div class="demo-grid">
+                  <div class="demo-controls">
+                    <p class="muted">Haz clic en un archivo o carpeta para calcular su tamaño.</p>
+                    <ul class="fs-tree">
+                      @for (row of fsRows; track row.name) {
+                        <li [style.padding-left.px]="row.depth * 18">
+                          <button
+                            type="button"
+                            class="fs-item"
+                            [class.is-active]="selectedFsName === row.name"
+                            (click)="selectFs(row.name)"
+                          >
+                            <span>{{ row.type === 'folder' ? '📁' : '📄' }} {{ row.name }}</span>
+                            <small>{{ row.size }} KB</small>
+                          </button>
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                  <div class="demo-output">
+                    <span class="output-line">Seleccionado: <strong>{{ selectedFsName }}</strong></span>
+                    <strong class="account-balance">{{ selectedFsSize }} KB</strong>
+                    <p class="muted">getSize() se ejecuta igual para un archivo que para un árbol completo.</p>
+                  </div>
+                </div>
+              }
+
+              @case ('iterator') {
+                <div class="demo-grid">
+                  <div class="iterator-card">
+                    <span class="demo-kicker">Iterador A</span>
+                    <p class="output-line">{{ iteratorMessageA }}</p>
+                    <button class="button button-primary button-sm" type="button" (click)="nextA()">next() →</button>
+                    <small class="muted">Cursor: {{ iteratorA }} / {{ playlist.length }}</small>
+                  </div>
+                  <div class="iterator-card">
+                    <span class="demo-kicker">Iterador B</span>
+                    <p class="output-line">{{ iteratorMessageB }}</p>
+                    <button class="button button-primary button-sm" type="button" (click)="nextB()">next() →</button>
+                    <small class="muted">Cursor: {{ iteratorB }} / {{ playlist.length }}</small>
+                  </div>
+                </div>
+                <button class="button button-ghost button-sm reset-button" type="button" (click)="resetIterators()">Reiniciar iteradores</button>
+              }
+
+              @case ('memento') {
+                <div class="demo-grid">
+                  <div class="demo-controls">
+                    <label>
+                      Contenido del editor
+                      <textarea rows="4" [value]="editorText" (input)="editorText = $any($event.target).value"></textarea>
+                    </label>
+                    <div class="button-row">
+                      <button class="button button-primary button-sm" type="button" (click)="saveSnapshot()">Guardar instantánea</button>
+                      <button class="button button-ghost button-sm" type="button" (click)="undo()">Deshacer</button>
+                    </div>
+                  </div>
+                  <div class="demo-output">
+                    <span class="output-line">Instantáneas guardadas: <strong>{{ mementoHistory.length }}</strong></span>
+                    <p class="message">{{ mementoMessage }}</p>
+                    <p class="muted">History conserva copias inmutables; el editor controla cómo restaurarlas.</p>
+                  </div>
+                </div>
+              }
+
+              @case ('state') {
+                <div class="demo-grid">
+                  <div class="demo-controls player-controls">
+                    <div class="player-screen">
+                      <span class="state-badge">{{ playerState }}</span>
+                      <strong>{{ tracks[trackIndex] }}</strong>
+                      <span class="muted">Pista {{ trackIndex + 1 }} de {{ tracks.length }}</span>
+                    </div>
+                    <div class="button-row">
+                      <button class="button button-ghost button-sm" type="button" (click)="previousTrack()">⏮</button>
+                      <button class="button button-primary button-sm" type="button" (click)="play()">▶ Play</button>
+                      <button class="button button-ghost button-sm" type="button" (click)="pause()">⏸ Pause</button>
+                      <button class="button button-ghost button-sm" type="button" (click)="nextTrack()">⏭</button>
+                    </div>
+                  </div>
+                  <div class="demo-output">
+                    <p class="message">{{ stateLog }}</p>
+                    <p class="muted">Cada estado encapsula las transiciones válidas para play, pause, next y previous.</p>
+                  </div>
+                </div>
+              }
+            }
+          </div>
+
+          <details class="code-block">
+            <summary>Ver fragmento de código</summary>
+            <pre><code>{{ selectedPattern().code }}</code></pre>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <p>© {{ currentYear }} Angel Julian Cuero Jiménez · Taller de Patrones de Diseño</p>
+    <p>Angular · TypeScript · GitHub Pages</p>
+  </div>
+</footer>

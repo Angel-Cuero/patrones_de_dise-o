@@ -1,5 +1,12 @@
 ﻿# Taller de Patrones de Diseño
 
+> **Demo interactiva:** [https://angel-cuero.github.io/patrones_de_dise-o/](https://angel-cuero.github.io/patrones_de_dise-o/)
+>
+> Los diez ejercicios originales de Deno se presentan también en una aplicación
+> Angular dentro de la carpeta [`web/`](web). Cada patrón incluye explicación,
+> problema, solución y una demostración interactiva. El despliegue se realiza
+> automáticamente con GitHub Actions en cada push a `main`.
+
 Repositorio con la solución del taller de arquitectura de software. Cada
 ejercicio implementa un patrón de diseño diferente en un archivo independiente,
 con comentarios que explican qué hace el patrón, qué problema resuelve y por
